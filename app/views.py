@@ -6,7 +6,7 @@ This file creates your application.
 """
 import os
 from app import app
-from flask import render_template, request, redirect, url_for, flash, session, abort, jsonify
+from flask import render_template, request, redirect, url_for, flash, session, abort, jsonify, Flask
 from werkzeug.utils import secure_filename
 
 
@@ -30,7 +30,7 @@ def add_file():
     if not session.get('logged_in'):
         abort(401)
 
-    file_folder = ''
+    file_folder =  app.config['UPLOAD_FOLDER']
 
     if request.method == 'POST':
         file = request.files['file']
