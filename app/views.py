@@ -62,6 +62,23 @@ def logout():
     return redirect(url_for('home'))
 
 
+@app.route('/filelisting')
+def listingfiles():
+    return render_template("allfiles.html", filess= show())
+    
+    
+def show():
+    filess=[]
+    rootdir = os.getcwd()
+    for subdir, dirs, files in os.walk(rootdir +  "/app/static/uploads"):
+        for file in files:
+            filess.append(os.path.join(subdir,file))
+        return filess
+        
+###  use a list to store the values and do everything with the list name pass the list name into the render template and put now=listname.
+#pass the list name into the html file and keep appending that list.
+
+
 ###
 # The functions below should be applicable to all Flask apps.
 ###

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h1 class="page-header">ALL FILES</h1>
+<p>This webpage lists all the files present in your uploads folder.</p>
+
+<div class="alert alert-success">
+    <ol>
+        {% for stuff in filess %}
+             <li>{{ stuff }}</li>
+        {% endfor %}
+    </ol>
+   
+</div>
+{% endblock %}
+
+
+
+
