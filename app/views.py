@@ -64,7 +64,10 @@ def logout():
 
 @app.route('/filelisting')
 def listingfiles():
-    return render_template("allfiles.html", filess= show())
+     if not session.get('logged_in'):
+        abort(401)
+     else:
+         return render_template("allfiles.html", filess= show())
     
     
 def show():
